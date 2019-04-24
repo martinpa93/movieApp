@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { IMovies } from '../model/IMovies.interface';
+
 
 @Component({
   selector: 'app-movies',
