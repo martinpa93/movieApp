@@ -13,14 +13,21 @@ import { IMovies } from '../model/IMovies.interface';
 export class MoviesPage implements OnInit {
   results:Observable<IMovies>;
   term:string=''; 
-  type:string=''; 
+  year:string='';
 
   constructor(private movieService:MovieService) { }
 
   ngOnInit() {
   }
 
+  clear(){
+    this.year='';
+  }
+  
   searchChanged():void{
-    this.results=this.movieService.searchMovies(this.term,this.type)
+    let txdate:string;
+    if(this.year)
+      txdate=this.year.substr(0,4);
+    this.results=this.movieService.searchMovies(this.term,txdate);
   }
 }

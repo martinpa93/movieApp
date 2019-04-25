@@ -14,8 +14,8 @@ export class MovieService {
 
   constructor(private http:HttpClient) { }
 
-  searchMovies(title:string, type:string){
-    this.url =`${environment.apiURL}&type=movie&s=${encodeURI(title)}`;
+  searchMovies(title:string,year:string){
+    this.url =`${environment.apiURL}&type=movie&s=${encodeURI(title)}&y=${year}`;
     return this.http.get<IMovies>(this.url).pipe(map(results=>results['Search']));
   }
 
