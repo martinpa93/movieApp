@@ -1,0 +1,11 @@
+.coverImg{
+    max-height:50vh;
+    max-width:50vh;
+    padding:5px;
+    margin:auto;
+}
+@media(max-width:800px){
+    .coverImg{
+        max-height:100%;
+    }
+}

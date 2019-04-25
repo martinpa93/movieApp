@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { MovieService } from '../services/movie.service';
 import { IMovies } from '../model/IMovies.interface';
 
 
@@ -9,10 +11,16 @@ import { IMovies } from '../model/IMovies.interface';
   styleUrls: ['./movies.page.scss'],
 })
 export class MoviesPage implements OnInit {
+  results:Observable<IMovies>;
+  term:string=''; 
+  type:string=''; 
 
-  constructor() { }
+  constructor(private movieService:MovieService) { }
 
   ngOnInit() {
   }
 
+  searchChanged():void{
+    this.results=this.movieService.searchMovies(this.term,this.type)
+  }
 }

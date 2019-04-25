@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService } from '../services/movie.service';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-movie',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MoviePage implements OnInit {
 
-  constructor() { }
+  content:object=null;
+
+  constructor(private movieService:MovieService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit() {
+    let id=this.activatedRoute.snapshot.paramMap.get('id');
+    this.movieService.geMovie(id).subscribe(result=> {
+      this.content=result;
+    })
   }
 
 }
